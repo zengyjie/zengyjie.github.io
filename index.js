@@ -45,6 +45,8 @@ player.draw()
 
 console.log(player)
 
-window.addEventListener('click', () => {
-    
+addEventListener('click', (event) => {
+   const projectile = new Projectile(canvs.width / 2, canvas.height / 2, 5, 'red', null)
+
+   projectile.draw
 })
