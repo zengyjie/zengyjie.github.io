@@ -9,7 +9,7 @@ class Player {
         this.x = x
         this.y = y
         this.radius = radius
-        this.color = colors
+        this.color = color
     }
 
     draw() {
