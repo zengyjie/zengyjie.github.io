@@ -6,10 +6,10 @@ canvas.height = innerHeight
 
 class Player {
     constructor(x, y, radius, color) {
-        this.x
-        this.y
-        this.radius
-        this.color
+        this.x = x
+        this.y = y
+        this.radius = radius
+        this.color = colors
     }
 
     draw() {
@@ -23,5 +23,7 @@ class Player {
 const x = canvas.width / 2
 const y = canvas.height / 2
 
-const player = new Player(x, y, 30, 'green')
+const player = new Player(x, y, 30, 'blue')
 player.draw()
+
+console.log(player)
