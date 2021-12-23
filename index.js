@@ -114,8 +114,8 @@ const projectile = new Projectile(
     5,
     'red',
     {
-        x: 1,
-        y: 1
+        x: 5,
+        y: 5
     }
 )
 
@@ -130,7 +130,8 @@ function animate() {
     enemies.forEach((enemy, index) => {
         enemy.update()
 
-        projectiles.forEach(projectile => {
+        projectiles.forEach((projectile, projectileIndex)
+        => {
             const dist = Math.hypot(
                 projectile.x - enemy.x,
                 projectile.y - enemy.y)
