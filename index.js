@@ -144,3 +144,4 @@ addEventListener('click', (event) =>
 })
 
 animate()
+spawnEnemies()
