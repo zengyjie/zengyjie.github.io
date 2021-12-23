@@ -111,7 +111,7 @@ function spawnEnemies() {
                 radius,
                 color,
                 velocity))
-    }, 500)
+    },1000)
 }
 
 function move(event) {
