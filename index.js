@@ -79,7 +79,7 @@ function spawnEnemies() {
         const radius = 30
         const color = 'green'
         const velocity = {
-            x: 1
+            x: 1,
             y: 1
         }
         spawnEnemies.push(new Enemy())
