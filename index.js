@@ -64,8 +64,7 @@ const projectile = new Projectile(
 
 function animate() {
     requestAnimationFrame(animate)
-    projectiles.forEach((projectile)
-    =>  {
+    projectiles.forEach((projectile) =>  {
         projectile.update()
     })
 }
