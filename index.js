@@ -57,12 +57,12 @@ const projectile = new Projectile(
         x: 1,
         y: 1
     }
- )
+)
 
 function animate() {
     requestAnimationFrame(animate)
     projectile.draw()
-    projectile.update
+    projectile.update()
 }
 
 addEventListener('click', (event) => 
