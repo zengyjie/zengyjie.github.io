@@ -71,7 +71,7 @@ const y = canvas.height / 2
 
 const player = new Player(x, y, 30, 'blue')
 const projectiles = []
-const enemies
+const enemies = []
 
 function spawnEnemies() {
     setInterval(() => {
