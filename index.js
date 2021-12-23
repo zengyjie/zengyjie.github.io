@@ -18,6 +18,12 @@ class Player {
         c.fillStyle = this.color
         c.fill()
     }
+
+    update() {
+        this.draw()
+        this.x += this.velocity.x
+        this.y += this.velocity.y 
+    }
 }
 
 class Projectile {
@@ -108,14 +114,36 @@ function spawnEnemies() {
     }, 500)
 }
 
+function move(event) {
+    switch(event.key) {
+        case "KeyW":
+            player.y -= 5
+    }
+
+    switch(event.key) {
+        case "KeyA":
+            player.x -= 5
+    }
+
+    switch(event.key) {
+        case "KeyS":
+            player.y += 5
+    }
+
+    switch(event.key) {
+        case "KeyD":
+            player.x += 5
+    }
+}
+
 const projectile = new Projectile(
     canvas.width / 2,
     canvas.height / 2,
     5,
     'red',
     {
-        x: 5,
-        y: 5
+        x: 7.5,
+        y: 7.5
     }
 )
 
@@ -124,7 +152,19 @@ function animate() {
     animationId = requestAnimationFrame(animate)
     c.fillStyle = 'rgba(0, 0, 0, 0.1'
     c.fillRect(0, 0, canvas.width, canvas.height)
-    player.draw()
+    player.update()
+    player.forEach((player, index) =>  {
+        projectile.update()
+
+        if (player.x + player.radius < 0 ||
+            player.x - player.radius > canvas.width ||
+            player.y + player.radius < 0 ||
+            player.y - player.radius > canvas.height) {
+            setTimeout(() =>{
+                player.splice(index, 1)
+            }, 0)
+        }
+    })
     projectiles.forEach((projectile, index) =>  {
         projectile.update()
 
@@ -163,6 +203,8 @@ function animate() {
         });
     })
 }
+
+addEventListener('keydown', move)
 
 addEventListener('click', (event) => 
     {
