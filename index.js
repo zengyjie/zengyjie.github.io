@@ -77,7 +77,7 @@ function spawnEnemies() {
     setInterval(() => {
         const radius = math.random * (30 - 4) + 4
 
-        let x
+        let x 
         let y
 
         if (Math.random() < 0.5) {
@@ -127,8 +127,20 @@ function animate() {
         projectile.update()
     })
 
-    enemies.forEach((enemy) => {
+    enemies.forEach((enemy, index) => {
         enemy.update()
+
+        projectiles.forEach(projectile => {
+            const dist = Math.hypot(
+                projectile.x - enemy.x,
+                projectile.y - enemy.y)
+
+            if (dist - enemy.radius - projectile.radius < 1)
+                {
+                enemies.splice(index, 1)
+                projectiles.splice(projectileIndex, 1)
+            }
+        });
     })
 }
 
