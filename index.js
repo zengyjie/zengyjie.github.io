@@ -45,6 +45,9 @@ class Projectile {
 const x = canvas.width / 2
 const y = canvas.height / 2
 
+const player = new Player(x, y, 30, 'blue')
+player.draw()
+
 const projectile = new Projectile(
     canvas.width / 2,
     canvas.height / 2,
@@ -55,9 +58,6 @@ const projectile = new Projectile(
         y: 1
     }
  )
- 
-const player = new Player(x, y, 30, 'blue')
-player.draw()
 
 function animate() {
     requestAnimationFrame(animate)
