@@ -122,10 +122,20 @@ const projectile = new Projectile(
 let animationId
 function animate() {
     animationId = requestAnimationFrame(animate)
-    c.clearRect(0, 0, canvas.width, canvas.height)
+    c.fillStyle = 'rgba(0, 0, 0, 0.1'
+    c.fillRect(0, 0, canvas.width, canvas.height)
     player.draw()
-    projectiles.forEach((projectile) =>  {
+    projectiles.forEach((projectile, index) =>  {
         projectile.update()
+
+        if (projectile.x + projectile.radius < 0 ||
+            projectile.x - projectile.radius > canvas.width ||
+            projectile.y + projectile.radius < 0 ||
+            projectile.y - projectile.radius > canvas.height) {
+            setTimeout(() =>{
+                projectiles.splice(index, 1)
+            }, 0)
+        }
     })
 
     enemies.forEach((enemy, index) => {
