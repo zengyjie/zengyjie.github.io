@@ -139,7 +139,7 @@ function animate() {
             cancelAnimationFrame(animationId)
         }
         projectiles.forEach((projectile, projectileIndex)
-        => {
+            => {
             const dist = Math.hypot(
                 projectile.x - enemy.x,
                 projectile.y - enemy.y
