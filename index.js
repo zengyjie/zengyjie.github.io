@@ -105,7 +105,7 @@ function spawnEnemies() {
                 radius,
                 color,
                 velocity))
-    }, 1000)
+    }, 500)
 }
 
 const projectile = new Projectile(
