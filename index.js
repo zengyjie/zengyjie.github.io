@@ -97,6 +97,11 @@ function moveY(event) {
     }
 }
 
+function movePlayer() {
+    moveX()
+    moveY()
+}
+
 var x = canvas.width / 2
 var y = canvas.height / 2
 
