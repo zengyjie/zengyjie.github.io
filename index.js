@@ -148,9 +148,13 @@ const projectile = new Projectile(
     }
 )
 
-function movePlayer() {
-    new Player(moveX(), moveY(), 30, 'blue', velocity)
-}
+const player = new Player(
+    moveX(),
+    moveY(),
+    30,
+    'blue',
+    velocity
+)
 
 let animationId
 
