@@ -4,6 +4,8 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
+var playerX
+var playerY
 class Player {
     constructor(x, y, radius, color, velocity) {
         this.x = x
@@ -80,18 +82,23 @@ window.addEventListener("keydown", function movePlayer(event) {
     switch (event.key) {
         case "Down":
         case "ArrowDown":
+            playerY += 5
+            console.log(down)
             break;
 
         case "Up":
         case "ArrowUp":
+            playerY -= 5
             break;
 
         case "Left":
         case "ArrowLeft":
+            playerX -= 5
             break;
 
         case "Right":
         case "ArrowRight":
+            playerX += 5
             break;
 
         default:
@@ -153,8 +160,8 @@ const projectile = new Projectile(
 )
 
 const player = new Player(
-    moveX(),
-    moveY(),
+    playerX,
+    playerY,
     30,
     'blue',
     velocity
