@@ -45,8 +45,7 @@ class Projectile {
 
     update() {
         this.draw()
-        this.x += this.velocity.x
-        this.y += this.velocity.y
+        movePlayer()
     }
 }
 
@@ -68,7 +67,8 @@ class Enemy {
 
     update() {
         this.draw()
-        movePlayer()
+        this.x += this.velocity.x
+        this.y += this.velocity.y
     }
 }
 
