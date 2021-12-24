@@ -68,15 +68,38 @@ class Enemy {
 
     update() {
         this.draw()
-        this.x += this.velocity.x
-        this.y += this.velocity.y
+        movePlayer()
     }
 }
 
-const x = canvas.width / 2
-const y = canvas.height / 2
+function moveX(event) {
+    switch (event.key) {
+        case "KeyA":
+            player.x -= 5
+    }
 
-const player = new Player(x, y, 30, 'blue')
+    switch (event.key) {
+        case "KeyD":
+            player.x += 5
+    }
+}
+
+function moveY(event) {
+    switch (event.key) {
+        case "KeyW":
+            console.log(w)
+            player.y -= 5
+    }
+
+    switch (event.key) {
+        case "KeyS":
+            player.y += 5
+    }
+}
+
+var x = canvas.width / 2
+var y = canvas.height / 2
+
 const projectiles = []
 const enemies = []
 
@@ -115,29 +138,6 @@ function spawnEnemies() {
     }, 1000)
 }
 
-function move(event) {
-    switch (event.key) {
-        case "KeyW":
-            console.log(w)
-            player.y -= 5
-    }
-
-    switch (event.key) {
-        case "KeyA":
-            player.x -= 5
-    }
-
-    switch (event.key) {
-        case "KeyS":
-            player.y += 5
-    }
-
-    switch (event.key) {
-        case "KeyD":
-            player.x += 5
-    }
-}
-
 const projectile = new Projectile(
     canvas.width / 2,
     canvas.height / 2,
@@ -147,6 +147,10 @@ const projectile = new Projectile(
         y: 7.5
     }
 )
+
+function movePlayer() {
+    new Player(moveX(), moveY(), 30, 'blue', velocity)
+}
 
 let animationId
 
