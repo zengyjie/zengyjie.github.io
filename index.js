@@ -5,7 +5,7 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 class Player {
-    constructor(x, y, radius, color) {
+    constructor(x, y, radius, color, velocity) {
         this.x = x
         this.y = y
         this.radius = radius
@@ -23,7 +23,7 @@ class Player {
     update() {
         this.draw()
         this.x += this.velocity.x
-        this.y += this.velocity.y 
+        this.y += this.velocity.y
     }
 }
 
@@ -46,7 +46,7 @@ class Projectile {
     update() {
         this.draw()
         this.x += this.velocity.x
-        this.y += this.velocity.y 
+        this.y += this.velocity.y
     }
 }
 
@@ -69,7 +69,7 @@ class Enemy {
     update() {
         this.draw()
         this.x += this.velocity.x
-        this.y += this.velocity.y 
+        this.y += this.velocity.y
     }
 }
 
@@ -84,15 +84,15 @@ function spawnEnemies() {
     setInterval(() => {
         const radius = Math.random() * (30 - 4) + 4
 
-        let x 
+        let x
         let y
 
         if (Math.random() < 0.5) {
-        x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
-        y = Math.random() * canvas.height
+            x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
+            y = Math.random() * canvas.height
         } else {
-        x = Math.random() * canvas.width
-        y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
+            x = Math.random() * canvas.width
+            y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
         }
 
         const color = 'green'
@@ -112,27 +112,27 @@ function spawnEnemies() {
                 radius,
                 color,
                 velocity))
-    },1000)
+    }, 1000)
 }
 
 function move(event) {
-    switch(event.key) {
+    switch (event.key) {
         case "KeyW":
             console.log(w)
             player.y -= 5
     }
 
-    switch(event.key) {
+    switch (event.key) {
         case "KeyA":
             player.x -= 5
     }
 
-    switch(event.key) {
+    switch (event.key) {
         case "KeyS":
             player.y += 5
     }
 
-    switch(event.key) {
+    switch (event.key) {
         case "KeyD":
             player.x += 5
     }
@@ -142,39 +142,39 @@ const projectile = new Projectile(
     canvas.width / 2,
     canvas.height / 2,
     5,
-    'red',
-    {
+    'red', {
         x: 7.5,
         y: 7.5
     }
 )
 
 let animationId
+
 function animate() {
     animationId = requestAnimationFrame(animate)
     c.fillStyle = 'rgba(0, 0, 0, 0.1'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
-    player.forEach((player, index) =>  {
+    player.forEach((player, index) => {
         projectile.update()
 
         if (player.x + player.radius < 0 ||
             player.x - player.radius > canvas.width ||
             player.y + player.radius < 0 ||
             player.y - player.radius > canvas.height) {
-            setTimeout(() =>{
+            setTimeout(() => {
                 player.splice(index, 1)
             }, 0)
         }
     })
-    projectiles.forEach((projectile, index) =>  {
+    projectiles.forEach((projectile, index) => {
         projectile.update()
 
         if (projectile.x + projectile.radius < 0 ||
             projectile.x - projectile.radius > canvas.width ||
             projectile.y + projectile.radius < 0 ||
             projectile.y - projectile.radius > canvas.height) {
-            setTimeout(() =>{
+            setTimeout(() => {
                 projectiles.splice(index, 1)
             }, 0)
         }
@@ -186,7 +186,7 @@ function animate() {
         const dist = Math.hypot(
             player.x - enemy.x,
             player.y - enemy.y
-            )
+        )
         if (dist - enemy.radius - player.radius < 1) {
             cancelAnimationFrame(animationId)
         }
@@ -194,10 +194,9 @@ function animate() {
             const dist = Math.hypot(
                 projectile.x - enemy.x,
                 projectile.y - enemy.y
-                )
-            if (dist - enemy.radius - projectile.radius < 1)
-                {
-                setTimeout(() =>{
+            )
+            if (dist - enemy.radius - projectile.radius < 1) {
+                setTimeout(() => {
                     enemies.splice(index, 1)
                     projectiles.splice(projectileIndex, 1)
                 }, 0)
@@ -208,8 +207,7 @@ function animate() {
 
 addEventListener('keydown', move)
 
-addEventListener('click', (event) => 
-    {
+addEventListener('click', (event) => {
     const angle = Math.atan2(
         event.clientY - canvas.height / 2,
         event.clientX - canvas.width / 2
@@ -218,13 +216,13 @@ addEventListener('click', (event) =>
         x: Math.cos(angle),
         y: Math.sin(angle)
     }
-   projectiles.push(
-       new Projectile(
-        canvas.width / 2, 
-        canvas.height / 2,
-        5,
-        'red',
-        velocity
+    projectiles.push(
+        new Projectile(
+            canvas.width / 2,
+            canvas.height / 2,
+            5,
+            'red',
+            velocity
         )
     )
 })
