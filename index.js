@@ -175,18 +175,6 @@ function animate() {
     c.fillStyle = 'rgba(0, 0, 0, 0.1'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
-    player.forEach((player, index) => {
-        projectile.update()
-
-        if (player.x + player.radius < 0 ||
-            player.x - player.radius > canvas.width ||
-            player.y + player.radius < 0 ||
-            player.y - player.radius > canvas.height) {
-            setTimeout(() => {
-                player.splice(index, 1)
-            }, 0)
-        }
-    })
     projectiles.forEach((projectile, index) => {
         projectile.update()
 
