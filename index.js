@@ -163,8 +163,10 @@ const player = new Player(
     playerX,
     playerY,
     30,
-    'blue',
-    velocity
+    'blue', {
+        x: 5,
+        y: 5
+    }
 )
 
 let animationId
