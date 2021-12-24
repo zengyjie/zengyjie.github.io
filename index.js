@@ -24,7 +24,40 @@ class Player {
 
     update() {
         this.draw()
-        movePlayer()
+        window.addEventListener("keydown", function(event) {
+            if (event.defaultPrevented) {
+                return;
+            }
+
+            switch (event.key) {
+                case "Down":
+                case "ArrowDown":
+                    playerY += 5
+                    console.log(down)
+                    break;
+
+                case "Up":
+                case "ArrowUp":
+                    playerY -= 5
+                    break;
+
+                case "Left":
+                case "ArrowLeft":
+                    playerX -= 5
+                    break;
+
+                case "Right":
+                case "ArrowRight":
+                    playerX += 5
+                    break;
+
+                default:
+                    return;
+            }
+
+            event.preventDefault();
+        }, true);
+
     }
 }
 
@@ -73,40 +106,6 @@ class Enemy {
         this.y += this.velocity.y
     }
 }
-
-window.addEventListener("keydown", function movePlayer(event) {
-    if (event.defaultPrevented) {
-        return;
-    }
-
-    switch (event.key) {
-        case "Down":
-        case "ArrowDown":
-            playerY += 5
-            console.log(down)
-            break;
-
-        case "Up":
-        case "ArrowUp":
-            playerY -= 5
-            break;
-
-        case "Left":
-        case "ArrowLeft":
-            playerX -= 5
-            break;
-
-        case "Right":
-        case "ArrowRight":
-            playerX += 5
-            break;
-
-        default:
-            return;
-    }
-
-    event.preventDefault();
-}, true);
 
 var x = canvas.width / 2
 var y = canvas.height / 2
