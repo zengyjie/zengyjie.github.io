@@ -118,6 +118,7 @@ function spawnEnemies() {
 function move(event) {
     switch(event.key) {
         case "KeyW":
+            console.log(w)
             player.y -= 5
     }
 
