@@ -72,7 +72,7 @@ class Enemy {
     }
 }
 
-window.addEventListener("keydown", function moveX(event) {
+window.addEventListener("keydown", function movePlayer(event) {
     if (event.defaultPrevented) {
         return;
     }
@@ -100,24 +100,6 @@ window.addEventListener("keydown", function moveX(event) {
 
     event.preventDefault();
 }, true);
-
-function moveY(event) {
-    switch (event.key) {
-        case "KeyW":
-            console.log(w)
-            player.y -= 5
-    }
-
-    switch (event.key) {
-        case "KeyS":
-            player.y += 5
-    }
-}
-
-function movePlayer() {
-    moveX()
-    moveY()
-}
 
 var x = canvas.width / 2
 var y = canvas.height / 2
