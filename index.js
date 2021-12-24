@@ -72,17 +72,35 @@ class Enemy {
     }
 }
 
-function moveX(event) {
-    switch (event.key) {
-        case "KeyA":
-            player.x -= 5
+window.addEventListener("keydown", function moveX(event) {
+    if (event.defaultPrevented) {
+        return;
     }
 
     switch (event.key) {
-        case "KeyD":
-            player.x += 5
+        case "Down":
+        case "ArrowDown":
+            break;
+
+        case "Up":
+        case "ArrowUp":
+            break;
+
+        case "Left":
+        case "ArrowLeft":
+            break;
+
+        case "Right":
+        case "ArrowRight":
+            break;
+
+        default:
+            return;
     }
-}
+
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+}, true);
 
 function moveY(event) {
     switch (event.key) {
