@@ -209,8 +209,6 @@ function animate() {
     })
 }
 
-addEventListener('keydown', move)
-
 addEventListener('click', (event) => {
     const angle = Math.atan2(
         event.clientY - canvas.height / 2,
