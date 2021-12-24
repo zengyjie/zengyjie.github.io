@@ -22,8 +22,7 @@ class Player {
 
     update() {
         this.draw()
-        this.x += this.velocity.x
-        this.y += this.velocity.y
+        movePlayer()
     }
 }
 
@@ -45,7 +44,8 @@ class Projectile {
 
     update() {
         this.draw()
-        movePlayer()
+        this.x += this.velocity.x
+        this.y += this.velocity.y
     }
 }
 
