@@ -10,6 +10,7 @@ class Player {
         this.y = y
         this.radius = radius
         this.color = color
+        this.velocity = velocity
     }
 
     draw() {
