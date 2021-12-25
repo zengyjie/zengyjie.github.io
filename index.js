@@ -23,7 +23,7 @@ class Player {
     }
 
     update() {
-        Player.draw()
+        playerDraw()
         window.addEventListener("keydown", function(event) {
             if (event.defaultPrevented) {
                 return;
@@ -169,6 +169,10 @@ const player = new Player(
 )
 
 let animationId
+
+function playerDraw() {
+    Player.draw()
+}
 
 function animate() {
     animationId = requestAnimationFrame(animate)
