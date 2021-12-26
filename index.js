@@ -23,7 +23,7 @@ class Player {
     }
 
     update() {
-        Player.draw()
+        this.draw()
         window.addEventListener("keydown", function(event) {
             if (event.defaultPrevented) {
                 return;
