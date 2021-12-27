@@ -174,7 +174,7 @@ function animate() {
     animationId = requestAnimationFrame(animate)
     c.fillStyle = 'rgba(0, 0, 0, 0.1'
     c.fillRect(0, 0, canvas.width, canvas.height)
-    player.update()
+
     projectiles.forEach((projectile, index) => {
         projectile.update()
 
@@ -211,6 +211,8 @@ function animate() {
             }
         });
     })
+
+    player.update()
 }
 
 addEventListener('click', (event) => {
